@@ -7,21 +7,25 @@
         fill="#0094C3" fill-opacity="1" d="M0,160L34.3,154.7C68.6,149,137,139,206,160C274.3,181,343,235,411,218.7C480,203,549,117,617,106.7C685.7,96,754,160,823,160C891.4,160,960,96,1029,80C1097.1,64,1166,96,1234,122.7C1302.9,149,1371,171,1406,181.3L1440,192L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path>
     </svg>
 
-    <div class="z-10 flex items-center md:w-[400px] lg:w-[500px] md:h-[450px] lg:h-[550px] p-8 md:p-9 lg:p-10 bg-white rounded-xl">
+    <div class="z-10 flex items-center md:w-[400px] lg:w-[500px] h-max p-8 md:p-9 lg:p-10 bg-white rounded-xl">
         <div class="w-full">
             <p class="top-0 text-center text-xl md:text-2xl lg:text-3xl font-bold mb-8">Register</p>
             <form action="/register" method="POST">
-                <div class="mb-14 lg:mb-4">
-                    <label for="username" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 dark:text-white">Username</label>
-                    <input name="username" type="text" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4" placeholder="Verlinof" required>
+                @csrf
+                <div class="mb-2 lg:mb-4">
+                    <label for="username" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('username') text-red-500 @enderror">Username</label>
+                    <input name="username" type="text" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('username') border-red-500 placeholder-red-400 @enderror" placeholder="Username" value="{{ old('username') }}">
+                    <p class="text-red-500 text-[12px]">@error('username') {{ $message }} @enderror</p>
                 </div>
                 <div class="mb-2 lg:mb-4">
-                    <label for="password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 dark:text-white">Password</label>
-                    <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4" placeholder="********" required>
+                    <label for="password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('password') text-red-500 @enderror">Password</label>
+                    <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('password') border-red-500 placeholder-red-400 @enderror" placeholder="*****">
+                    <p class="text-red-500 text-[12px]">@error('password') {{ $message }} @enderror</p>
                 </div>
                 <div class="mb-2 lg:mb-4">
-                    <label for="re-password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 dark:text-white">Re-Password</label>
-                    <input name="re_password" type="password" id="re-password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4" placeholder="********" required>
+                    <label for="re-password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('re_password') text-red-500 @enderror">Re-Password</label>
+                    <input name="re_password" type="password" id="re-password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('re_password') border-red-500 placeholder-red-400 @enderror" placeholder="*****">
+                    <p class="text-red-500 text-[12px]">@error('re_password') {{ $message }} @enderror</p>
                 </div>
                 <p class="font-normal text-sm">Already have an Account? <a class="md:ms-1 font-semibold text-primary-color" href="/login">Login</a></p>
                 <div class="mb-8 lg:mb-10">

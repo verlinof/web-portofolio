@@ -30,7 +30,7 @@
     <div>
         <div class="p-3 md:p-10">
             <div>
-                <p class="text-xl md:text-3xl text-center font-bold">Schools</p>
+                <p class="text-xl md:text-3xl text-center font-bold">Education</p>
                 <hr class="mt-1 w-24 md:w-36 mx-auto h-1 rounded-lg bg-primary-color">
             </div>
             <div class="p-3 lg:px-16 md:py-7 flex flex-wrap justify-center lg:justify-between">

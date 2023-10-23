@@ -4,7 +4,10 @@
         <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Verlino<span class="text-primary-color">Fajri</span></span>
     </a>
     <div class="flex md:order-2">
-        <a href="/login" class="text-white bg-primary-color hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 transition duration-300">Login</a>
+        <form action="/logout" method="POST">
+          @csrf
+          <button href="/login" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 transition duration-300">Logout</button>
+        </form>
         <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-cta" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
           <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
