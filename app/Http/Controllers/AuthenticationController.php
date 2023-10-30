@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailJob;
+use App\Mail\SendEmailUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 class AuthenticationController extends Controller
@@ -54,15 +57,28 @@ class AuthenticationController extends Controller
     {
         $validated_data = $request->validate([
             'username' => 'required|max:255|unique:users',
+            'email' => 'required|email:rfc|unique:users',
             'password' => 'required|min:5|max:255',
             're_password' => 'required|min:5|max:255|same:password',
         ]);
 
         User::create([
             'username' => $validated_data['username'],
+            'email' => $validated_data['email'],
             'password' => $validated_data['password']
         ]);
 
+        $data = [
+            "name" => "Register Account",
+            "subject" => "Register Account",
+            "body" => "Selamat, Akun anda " ."<b>". $validated_data['username'] . "</b>" . " telah berhasil terdaftar",
+        ];
+
+        $data['email'] = $validated_data['email'];
+
+        // Mail::to($data['email'])->send(new SendEmailUser($data));
+        dispatch(new SendEmailJob($data));
+        
         return redirect('/login')->with('pesan', 'Register Berhasil! Silahkan Login')->onlyInput('username');
     }
 

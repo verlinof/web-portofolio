@@ -7,6 +7,7 @@
     <title>User Registration</title>
 </head>
 <body>
-    <p>{{ $data["body"] }}</p>
+    <h3>{{ $data["name"] }}</h3>
+    <p>{!! $data["body"] !!}</p>
 </body>
 </html>
