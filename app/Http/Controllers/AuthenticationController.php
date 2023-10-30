@@ -76,7 +76,6 @@ class AuthenticationController extends Controller
 
         $data['email'] = $validated_data['email'];
 
-        // Mail::to($data['email'])->send(new SendEmailUser($data));
         dispatch(new SendEmailJob($data));
         
         return redirect('/login')->with('pesan', 'Register Berhasil! Silahkan Login')->onlyInput('username');
