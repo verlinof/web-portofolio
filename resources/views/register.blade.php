@@ -18,6 +18,11 @@
                     <p class="text-red-500 text-[12px]">@error('username') {{ $message }} @enderror</p>
                 </div>
                 <div class="mb-2 lg:mb-4">
+                    <label for="email" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('email') text-red-500 @enderror">Email</label>
+                    <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('email') border-red-500 placeholder-red-400 @enderror" placeholder="youremail@mail.com">
+                    <p class="text-red-500 text-[12px]">@error('email') {{ $message }} @enderror</p>
+                </div>
+                <div class="mb-2 lg:mb-4">
                     <label for="password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('password') text-red-500 @enderror">Password</label>
                     <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('password') border-red-500 placeholder-red-400 @enderror" placeholder="*****">
                     <p class="text-red-500 text-[12px]">@error('password') {{ $message }} @enderror</p>
