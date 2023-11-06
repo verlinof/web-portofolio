@@ -9,27 +9,32 @@
 
     <div class="z-10 flex items-center md:w-[400px] lg:w-[500px] h-max p-8 md:p-9 lg:p-10 bg-white rounded-xl">
         <div class="w-full">
-            <p class="top-0 text-center text-xl md:text-2xl lg:text-3xl font-bold mb-8">Register</p>
-            <form action="/register" method="POST">
+            <p class="top-0 text-center text-xl md:text-2xl lg:text-3xl font-bold mb-6">Register</p>
+            <form action="/register" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="mb-2 lg:mb-4">
+                <div class="mb-2 lg:mb-2">
                     <label for="username" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('username') text-red-500 @enderror">Username</label>
                     <input name="username" type="text" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('username') border-red-500 placeholder-red-400 @enderror" placeholder="Username" value="{{ old('username') }}">
                     <p class="text-red-500 text-[12px]">@error('username') {{ $message }} @enderror</p>
                 </div>
-                <div class="mb-2 lg:mb-4">
+                <div class="mb-2 lg:mb-2">
                     <label for="email" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('email') text-red-500 @enderror">Email</label>
-                    <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('email') border-red-500 placeholder-red-400 @enderror" placeholder="youremail@mail.com">
+                    <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('email') border-red-500 placeholder-red-400 @enderror" placeholder="youremail@mail.com" value="{{ old('email') }}">
                     <p class="text-red-500 text-[12px]">@error('email') {{ $message }} @enderror</p>
                 </div>
-                <div class="mb-2 lg:mb-4">
+                <div class="mb-2 lg:mb-2">
                     <label for="password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('password') text-red-500 @enderror">Password</label>
                     <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('password') border-red-500 placeholder-red-400 @enderror" placeholder="*****">
                     <p class="text-red-500 text-[12px]">@error('password') {{ $message }} @enderror</p>
                 </div>
-                <div class="mb-2 lg:mb-4">
+                <div class="mb-2 lg:mb-2">
                     <label for="re-password" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('re_password') text-red-500 @enderror">Re-Password</label>
                     <input name="re_password" type="password" id="re-password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 lg:p-4 @error('re_password') border-red-500 placeholder-red-400 @enderror" placeholder="*****">
+                    <p class="text-red-500 text-[12px]">@error('re_password') {{ $message }} @enderror</p>
+                </div>
+                <div class="mb-2 lg:mb-2">
+                    <label for="photo" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('re_password') text-red-500 @enderror">Photo</label>
+                    <input name="photo" type="file" accept="image/*" id="photo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full @error('photo') border-red-500 placeholder-red-400 @enderror" value="{{ old('photo') }}">
                     <p class="text-red-500 text-[12px]">@error('re_password') {{ $message }} @enderror</p>
                 </div>
                 <p class="font-normal text-sm">Already have an Account? <a class="md:ms-1 font-semibold text-primary-color" href="/login">Login</a></p>
