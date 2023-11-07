@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AuthenticationController extends Controller
@@ -75,24 +75,32 @@ class AuthenticationController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('photo')->getClientOriginalExtension();
             $filenameSimpan = $filename . "_" . time() . "." . $extension;
-            $path = $request->file('photo')->storeAs('photos', $filenameSimpan);
+            $image = Image::make($request->file('photo'));
+            $image->save('storage/photos/'.$filenameSimpan);
+
+            $pathSquare = ('storage/photos_square/'.$filenameSimpan);
+            $image->fit(250,250)->save($pathSquare);
             
-            // $filenameSimpanSquare = $filename . "_" . time() . "Square"."." . $extension;
-            // $pathSquare = $request->file('photo')->storeAs('photos_square', $filenameSimpanSquare);
+            $image = Image::make($request->file('photo'));
+
+            $pathThumbnail = ('storage/photos_thumbnail/'.$filenameSimpan);
+            $image->fit(350,200)->save($pathThumbnail);           
             
-            // $image = Image::make($request->file('photo'))->resize(100, 100)->save($pathSquare);
-            // $image->save($pathSquare);
+            User::create([
+                'username' => $validated_data['username'],
+                'email' => $validated_data['email'],
+                'password' => $validated_data['password'],
+                'photo' => $filenameSimpan
+            ]);
+        }else{
+            User::create([
+                'username' => $validated_data['username'],
+                'email' => $validated_data['email'],
+                'password' => $validated_data['password']
+            ]);
         }
         
-        User::create([
-            'username' => $validated_data['username'],
-            'email' => $validated_data['email'],
-            'password' => $validated_data['password'],
-            'photo' => $path,
-            // 'photo_resize' => $pathResize,
-            // 'photo_square' => $pathSquare
-        ]);
-
+    
         /**
          * Buat Email
          */
@@ -169,21 +177,33 @@ class AuthenticationController extends Controller
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $request->file('photo')->getClientOriginalExtension();
                 $filenameSimpan = $filename . "_" . time() . "." . $extension;
-                $path = $request->file('photo')->storeAs('photos', $filenameSimpan);
-                File::delete("storage/".$user->photo);                
-                // $filenameSimpanSquare = $filename . "_" . time() . "Square"."." . $extension;
-                // $pathSquare = $request->file('photo')->storeAs('photos_square', $filenameSimpanSquare);
+                $image = Image::make($request->file('photo'));
+                $image->save('storage/photos/'.$filenameSimpan);
+    
+                $pathSquare = ('storage/photos_square/'.$filenameSimpan);
+                $image->fit(250,250)->save($pathSquare);
                 
-                // $image = Image::make($request->file('photo'))->resize(100, 100)->save($pathSquare);
-                // $image->save($pathSquare);
+                $image = Image::make($request->file('photo'));
+    
+                $pathThumbnail = ('storage/photos_thumbnail/'.$filenameSimpan);
+                $image->fit(350,200)->save($pathThumbnail); 
+
+                File::delete("storage/photos/".$user->photo);
+                File::delete("storage/photos_square/".$user->photo);
+                File::delete("storage/photos_thumbnail/".$user->photo);
+            
+                $userUpdate->update([
+                    'email' => $request['email'],
+                    'photo' => $filenameSimpan
+                ]);
+                
+                return redirect('/profile')->with('pesan', 'Profil Berhasil Di Update');
+            }else{
+                $userUpdate->update([
+                    'email' => $request['email']
+                ]);
+                return redirect('/profile')->with('pesan', 'Profil Berhasil Di Update');
             }
-
-            $userUpdate->update([
-                'email' => $request['email'],
-                'photo' => $path
-            ]);
-
-            return redirect('/edit')->with('pesan', 'Profil Berhasil Di Update');
 
         }
 
@@ -197,8 +217,9 @@ class AuthenticationController extends Controller
     {
         $user = Auth::user();
 
-        $path = "storage/app/public/photos";
-        File::delete($path ."/". $user->photo);
+        File::delete("storage/photos/".$user->photo);
+        File::delete("storage/photos_square/".$user->photo);
+        File::delete("storage/photos_thumbnail/".$user->photo);
         User::findOrFail($user->id)->delete();
         Auth::logout();
 
