@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="mb-2 lg:mb-2">
-                    <img class="w-28 mx-auto h-28 mb-3 rounded-full shadow-lg" src="{{ asset('storage/'.$user->photo) }}" alt="Profile Picture">
+                    <img class="w-28 mx-auto h-28 mb-3 rounded-full shadow-lg" src="{{ asset('storage/photos_square/'.$user->photo) }}" alt="Profile Picture">
                     <label for="photo" class="block mb-2 text-sm lg:text-lg font-medium text-gray-900 @error('re_password') text-red-500 @enderror">Photo</label>
                     <input name="photo" value="{{ asset('storage/'.$user->photo) }}" type="file" accept="image/*" id="photo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full @error('photo') border-red-500 placeholder-red-400 @enderror" value="{{ old('photo') }}">
                     <p class="text-red-500 text-[12px]">@error('photo') {{ $message }} @enderror</p>
