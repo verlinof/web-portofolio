@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::delete('/delete', [AuthenticationController::class, 'destroy'])->name('de
 Route::get('/edit', [AuthenticationController::class, 'edit'])->name('edit-account');
 
 Route::post('/update', [AuthenticationController::class, 'update'])->name('update-account');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');

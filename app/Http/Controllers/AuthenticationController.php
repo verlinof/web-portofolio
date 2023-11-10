@@ -23,6 +23,7 @@ class AuthenticationController extends Controller
 
             return view('dashboard', [
                 "user" => $user,
+                "page" => 'home'
             ]);
         }
 
@@ -130,8 +131,9 @@ class AuthenticationController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
+            $page = "profile";
     
-            return view('profile', compact('user'));
+            return view('profile', compact(['user', 'page']));
         }
 
         return redirect('/login');
@@ -152,8 +154,9 @@ class AuthenticationController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-    
-            return view('edit', compact('user'));
+            $page = "profile";
+
+            return view('edit', compact(['user', 'page']));
         }
 
         return redirect('/login');
