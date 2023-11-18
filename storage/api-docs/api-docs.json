@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Contoh API documentation",
+        "description": "Contoh API doc menggunakan OpenAPI/Swagger",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "choirudin.emcha@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/gallery": {
+            "get": {
+                "tags": [
+                    "gallery"
+                ],
+                "summary": "Returns a Gallery API",
+                "description": "API for accessing the Gallery",
+                "operationId": "gallery",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    }
+}
