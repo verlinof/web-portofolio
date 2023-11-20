@@ -10,7 +10,7 @@
     @if (count($posts) > 0)
     <div class="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         @foreach ($posts as $post)
-        <div class="w-full">
+        <div class="w-full">    
             <a href="{{ asset('storage/posts/image_square/'.$post["image"]) }}" data-lightbox="gallery" data-title="{{ $post["title"] }}">
                 <img class="h-auto w-full rounded-lg" src="{{ asset('storage/posts/image_square/'.$post["image"]) }}" alt="">
             </a>

@@ -21,10 +21,49 @@
                 ],
                 "summary": "Returns a Gallery API",
                 "description": "API for accessing the Gallery",
-                "operationId": "gallery",
+                "operationId": "Get",
                 "responses": {
                     "default": {
                         "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "gallery"
+                ],
+                "summary": "API Upload",
+                "description": "API untuk mengirimkan data-data postingan",
+                "operationId": "postGallery",
+                "requestBody": {
+                    "description": "Data untuk mengunggah gambar",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Judul Upload",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Deskripsi Gambar",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "File Gambar",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Successful operation"
                     }
                 }
             }

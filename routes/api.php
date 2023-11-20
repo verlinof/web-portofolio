@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/gallery", [ApiController::class, "index"])->name("gallery.index");
+
+Route::post("/gallery", [ApiController::class, "store"])->name("gallery-store");

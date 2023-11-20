@@ -20,8 +20,6 @@ class PostController extends Controller
             // $posts = Post::whereNotNull('image')->orderBy('created_at', 'desc')->paginate(30);
             $posts = Http::get(env("API_URL")."gallery")["data"];
 
-            // dd($posts);
-
             return view('post.index', [
                 'page' => 'posts',
                 'posts' => $posts,

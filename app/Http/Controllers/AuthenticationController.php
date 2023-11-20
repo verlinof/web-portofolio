@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
 
 class AuthenticationController extends Controller
 {
@@ -207,10 +206,7 @@ class AuthenticationController extends Controller
                 ]);
                 return redirect('/profile')->with('pesan', 'Profil Berhasil Di Update');
             }
-
         }
-
-
     }
 
     /**
