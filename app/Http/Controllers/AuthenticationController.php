@@ -17,14 +17,12 @@ class AuthenticationController extends Controller
      */
     public function dashboard()
     {
-        if(Auth::check()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            return view('dashboard', [
-                "user" => $user,
-                "page" => 'home'
-            ]);
-        }
+        return view('dashboard', [
+            "user" => $user,
+            "page" => 'home'
+        ]);
 
         return redirect('/login');
     }

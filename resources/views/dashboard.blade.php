@@ -35,7 +35,7 @@
             </div>
             <div class="p-3 lg:px-16 md:py-7 flex flex-wrap justify-center lg:justify-between">
                 {{-- Card --}}
-                <div class="max-w-sm bg-white border border-gra300 rounded-lg shadow p-3 my-3">
+                <div class="max-w-sm bg-white border border-gray-300 rounded-lg shadow p-3 my-3">
                     <a href="#">
                         <img class="rounded-t-lg w-full" src="{{ asset('/img/aby.jpeg') }}" alt="" />
                     </a>

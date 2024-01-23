@@ -6,7 +6,17 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            animation: {
+                marquee: "marquee 15s linear infinite",
+            },
+            keyframes: {
+                marquee: {
+                    "0%": { transform: "translateX(0%)" },
+                    "100%": { transform: "translateX(-100%)" },
+                },
+            },
+        },
         colors: {
             "primary-color": "#00A0D3",
             "secondary-color": "#0094C3",
