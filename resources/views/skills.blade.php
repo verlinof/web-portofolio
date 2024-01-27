@@ -6,7 +6,7 @@
 <div class="p-8 md:p-6 lg:p-5">
 </div>
 
-<section class="px-5 w-full py-[15px] md:py-[30px]">
+<section class="px-5 w-full py-[15px] md:py-[25px]">
     <div class="max-w-6xl mx-auto flex flex-col gap-y-8">
         <h1 class="font-bold text-xl md:text-2xl text-center">SCOPE OF SKILL</h1>
         <div class="grid grid-cols-2 gap-x-3 lg:grid-cols-3 lg:gap-x-6 gap-y-12">
@@ -93,4 +93,5 @@
 
     </div>
 </section>
+@include('components.footer')
 @endsection

@@ -34,13 +34,6 @@
           <a href="/skills" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-color md:p-0">Skills</a>
           @endif
         </li>
-        <li>
-          @if ($page == 'contact')
-          <a href="/" class="block py-2 pl-3 pr-4 text-white bg-primary-color md:bg-transparent md:text-primary-color rounded md:p-0" aria-current="page">Contact</a>
-          @else
-          <a href="/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-color md:p-0">Contact</a>
-          @endif
-        </li>
       </ul>
     </div>
   </div>

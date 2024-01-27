@@ -27,59 +27,46 @@
 {{-- END About Me --}}
 {{-- START Schools --}}
 <div class="w-full">
-    <div>
-        <div class="p-3 md:p-10">
-            <div>
-                <p class="text-xl md:text-3xl text-center font-bold">Education</p>
-                <hr class="mt-1 w-24 md:w-36 mx-auto h-1 rounded-lg bg-primary-color">
+    <div class="p-3 md:p-10">
+        <div>
+            <p class="text-xl md:text-3xl text-center font-bold">Education</p>
+            <hr class="mt-1 w-24 md:w-36 mx-auto h-1 rounded-lg bg-primary-color">
+        </div>
+        <div class="p-3 lg:px-16 md:py-7 grid grid-cols-2 gap-x-3 gap-y-3 lg:grid-cols-3 justify-center lg:justify-between">
+            {{-- Card --}}
+            <div class="max-w-sm h-full bg-white border border-gray-300 rounded-lg shadow p-3">
+                <img class="rounded-t-lg w-full" src="{{ asset('/img/aby.jpeg') }}" alt="" />
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Smp IT Abu Bakar</h5>
+                    <p class="font-semibold text-gray-700 dark:text-gray-400">
+                        Graduated
+                    </p>
+                </div>
             </div>
-            <div class="p-3 lg:px-16 md:py-7 flex flex-wrap justify-center lg:justify-between">
-                {{-- Card --}}
-                <div class="max-w-sm bg-white border border-gray-300 rounded-lg shadow p-3 my-3">
-                    <a href="#">
-                        <img class="rounded-t-lg w-full" src="{{ asset('/img/aby.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Smp IT Abu Bakar</h5>
-                        </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Lulus dengan nilai yang memuaskan, aktif di berbagai kegiatan dan organisasi,mengikuti perlombaan Paskibra 
-                        </p>
-                    </div>
-                </div>
 
-                <div class="max-w-sm bg-white border border-gray-300 rounded-lg shadow p-3 my-3">
-                    <a href="#">
-                        <img class="rounded-t-lg w-full" src="{{ asset('/img/man3.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Man 3 Sleman</h5>
-                        </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            Lulus dengan nilai yang memuaskan, mengikuti berbagai kegiatan dan juga organisasi, menjadi ketua divisi SDM di FKPO Sleman
-                        </p>
-                    </div>
+            <div class="max-w-sm h-full bg-white border border-gray-300 rounded-lg shadow p-3">
+                <img class="rounded-t-lg w-full" src="{{ asset('/img/man3.jpeg') }}" alt="" />
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Man 3 Sleman</h5>
+                    <p class="font-semibold text-gray-700 dark:text-gray-400">
+                        Graduated | Science
+                    </p>
                 </div>
+            </div>
 
-                <div class="max-w-sm bg-white border border-gray-300 rounded-lg shadow p-3 my-3">
-                    <a href="#">
-                        <img class="rounded-t-lg w-full" src="{{ asset('/img/tilc.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Universitas Gadjah Mada</h5>
-                        </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            IPS diatas 3.5, mengikuti berbagai UKM dan Perlombaan, mempelajari banyak bahasa pemrograman, mempelajari framework web dan mobile app
-                        </p>
-                    </div>
+            <div class="max-w-sm h-full bg-white border border-gray-300 rounded-lg shadow p-3">
+                <img class="rounded-t-lg w-full" src="{{ asset('/img/tilc.jpeg') }}" alt="" />
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Universitas Gadjah Mada</h5>
+                    <p class="font-semibold text-gray-700 dark:text-gray-400">
+                        On-Going | Software Engineering | GPA Index: -
+                    </p>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+
+@include('components.footer')
 {{-- END Schools --}}
 @endsection
